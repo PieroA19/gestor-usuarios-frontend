@@ -25,6 +25,9 @@
     <p>¿Ya tienes cuenta? <a href="index.html">Inicia sesión</a></p>
     <p id="error" class="error"></p>
   </div>
+  <!-- 1) Primero cargamos auth.js, donde están saveToken y parseJwt -->
+  <script src="js/auth.js"></script>
+  <!-- 2) Luego cargamos register.js, que invoca a saveToken() y parseJwt() -->
   <script src="js/register.js"></script>
 </body>
 </html>
