@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <title>Perfil - Gestor de Usuarios</title>
+</head>
+<body>
+  <div class="navbar">
+    <div>Mi Perfil</div>
+    <div>
+      <button id="goDashboardBtn">Panel Admin</button>
+      <button id="logoutBtn">Cerrar sesión</button>
+    </div>
+  </div>
+  <div class="container">
+    <h2>Datos de mi cuenta</h2>
+    <form id="profileForm">
+      <input type="hidden" id="userId" />
+      <label for="name">Nombre</label>
+      <input type="text" id="name" required />
+
+      <label for="email">Correo</label>
+      <input type="email" id="email" required />
+
+      <label for="password">Nueva contraseña (opcional)</label>
+      <input type="password" id="password" minlength="6" />
+
+      <button type="submit">Guardar cambios</button>
+    </form>
+    <p id="errorProfile" class="error"></p>
+  </div>
+  <script src="js/auth.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>

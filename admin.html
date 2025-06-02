@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <title>Panel Admin - Gestor de Usuarios</title>
+</head>
+<body>
+  <div class="navbar">
+    <div>Panel de Administración</div>
+    <div>
+      <button id="logoutBtn">Cerrar sesión</button>
+    </div>
+  </div>
+  <div class="container">
+    <h2>Usuarios registrados</h2>
+    <table id="usersTable" border="1" width="100%" style="border-collapse: collapse; margin-bottom: 20px;">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Correo</th>
+          <th>Rol</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Filas generadas dinámicamente -->
+      </tbody>
+    </table>
+
+    <h3>Crear nuevo usuario</h3>
+    <form id="createUserForm">
+      <label for="name">Nombre</label>
+      <input type="text" id="name" required />
+
+      <label for="email">Correo</label>
+      <input type="email" id="email" required />
+
+      <label for="password">Contraseña</label>
+      <input type="password" id="password" required minlength="6" />
+
+      <label for="role">Rol</label>
+      <select id="role" required>
+        <option value="usuario">Usuario</option>
+        <option value="admin">Admin</option>
+      </select>
+
+      <button type="submit">Crear usuario</button>
+    </form>
+    <p id="errorAdmin" class="error"></p>
+  </div>
+
+  <!-- Modal básico para editar usuario -->
+  <div id="editModal" style="display: none; position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%; background: rgba(0,0,0,0.5);">
+    <div style="background: white; max-width: 400px; margin: 100px auto; padding: 20px; border-radius: 8px; position: relative;">
+      <h3>Editar usuario</h3>
+      <form id="editUserForm">
+        <input type="hidden" id="editUserId" />
+        <label for="editName">Nombre</label>
+        <input type="text" id="editName" required />
+
+        <label for="editEmail">Correo</label>
+        <input type="email" id="editEmail" required />
+
+        <label for="editRole">Rol</label>
+        <select id="editRole" required>
+          <option value="usuario">Usuario</option>
+          <option value="admin">Admin</option>
+        </select>
+
+        <button type="submit">Guardar cambios</button>
+        <button type="button" id="cancelEdit">Cancelar</button>
+      </form>
+      <p id="errorEdit" class="error"></p>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
