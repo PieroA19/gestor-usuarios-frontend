@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Botón de logout
   logoutBtn.addEventListener('click', () => {
     clearToken();
-    window.location.href = 'login.html';
+    window.location.href = 'index.html';
   });
 
   // Ir al panel admin (solo si role=admin)
