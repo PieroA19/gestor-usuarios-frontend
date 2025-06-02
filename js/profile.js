@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('profileForm');
   const errorProfile = document.getElementById('errorProfile');
 
-  const API_URL = 'https://TU_BACKEND_URL/api/users';
+  const API_URL = 'https://gestor-usuarios-backend.onrender.com/api/users';
 
   // Si no es admin, ocultar botón de ir a panel
   if (userInfo.role !== 'admin') {

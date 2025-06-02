@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const cancelEdit = document.getElementById('cancelEdit');
   const errorEdit = document.getElementById('errorEdit');
 
-  const API_URL = 'https://TU_BACKEND_URL/api/users';
+  const API_URL = 'https://gestor-usuarios-backend.onrender.com/api/users';
 
   // Función para obtener y renderizar todos los usuarios
   async function fetchUsers() {
