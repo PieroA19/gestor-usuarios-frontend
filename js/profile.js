@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Si cambió contraseña, debe reingresar: descargar token y pedir login de nuevo.
       if (password) {
         clearToken();
-        window.location.href = 'login.html';
+        window.location.href = 'index.html';
       }
     } catch (err) {
       console.error('Error al actualizar perfil:', err);
