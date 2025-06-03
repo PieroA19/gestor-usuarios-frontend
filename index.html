@@ -21,6 +21,9 @@
     <p>¿No tienes cuenta? <a href="register.html">Regístrate</a></p>
     <p id="error" class="error"></p>
   </div>
+  <!-- 1) Primero cargamos auth.js, que define saveToken(), parseJwt(), etc. -->
+  <script src="js/auth.js"></script>
+  <!-- 2) Luego cargamos login.js, que asume que saveToken() ya existe -->
   <script src="js/login.js"></script>
 </body>
 </html>
