@@ -1,0 +1,315 @@
+/* stylesindex.css */
+
+/* ===============================================
+   VARIABLES DE COLOR PARA MODO CLARO / OSCURO
+   =============================================== */
+:root {
+  --clr-bg: #1e1e1e;
+  --clr-card: #2a2a2a;
+  --clr-text: #f0f0f0;
+  --clr-accent: #4dabf7;
+  --clr-input-bg: #3a3a3a;
+  --clr-input-text: #ffffff;
+  --clr-input-border: #555555;
+  --clr-button-text: #ffffff;
+  --clr-button-bg: #4dabf7;
+  --clr-button-hover-bg: #3398f0;
+  --clr-error: #ff6b6b;
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --transition-fast: 0.2s ease-in-out;
+}
+
+[data-theme="light"] {
+  --clr-bg: #f4f4f4;
+  --clr-card: #ffffff;
+  --clr-text: #1e1e1e;
+  --clr-accent: #4dabf7;
+  --clr-input-bg: #ffffff;
+  --clr-input-text: #1e1e1e;
+  --clr-input-border: #cccccc;
+  --clr-button-text: #ffffff;
+  --clr-button-bg: #4dabf7;
+  --clr-button-hover-bg: #3398f0;
+  --clr-error: #e63946;
+}
+
+/* ===============================================
+   RESET & TIPOGRAFÍA BÁSICA
+   =============================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
+html, body {
+  height: 100%;
+  font-family: var(--font-family);
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Transiciones suaves para los cambios de tema */
+html, body, .login-card, .footer, .header {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+a {
+  color: var(--clr-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ===============================================
+   HEADER
+   =============================================== */
+.header {
+  width: 100%;
+  background-color: var(--clr-card);
+  padding: 1rem 1.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header__inner {
+  max-width: 480px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__logo {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.header__toggle-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+  color: var(--clr-text);
+}
+
+.header__toggle-btn:hover {
+  transform: scale(1.2);
+}
+
+.header__toggle-btn:active {
+  transform: rotate(180deg);
+}
+
+/* ===============================================
+   CONTENEDOR PRINCIPAL Y TARJETA DE LOGIN
+   =============================================== */
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100% - 68px); /* Ajustado considerando header */
+  padding: 1rem;
+}
+
+.login-card {
+  background-color: var(--clr-card);
+  border-radius: 8px;
+  max-width: 380px;
+  width: 100%;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.login-card__title {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.login-card__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-card__label {
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.login-card__input {
+  padding: 0.65rem 0.75rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid var(--clr-input-border);
+  border-radius: 4px;
+  background-color: var(--clr-input-bg);
+  color: var(--clr-input-text);
+  font-size: 1rem;
+  transition: border-color var(--transition-fast);
+}
+
+.login-card__input:focus {
+  outline: none;
+  border-color: var(--clr-accent);
+}
+
+.login-card__button {
+  padding: 0.75rem;
+  background-color: var(--clr-button-bg);
+  color: var(--clr-button-text);
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.login-card__button:hover {
+  background-color: var(--clr-button-hover-bg);
+}
+
+.login-card__footer {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+  color: var(--clr-text);
+}
+
+.login-card__link {
+  font-weight: 500;
+}
+
+.login-card__error {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--clr-error);
+  text-align: center;
+  min-height: 1.2em;
+}
+
+
+/* ==============================
+   STYLES DEL FOOTER
+   ============================== */
+.footer {
+  background-color: var(--clr-card);
+  color: var(--clr-text);
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+  border-top: 2px solid var(--clr-input-border);
+}
+
+.footer__container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.footer__contact-info p {
+  margin-bottom: 0.5rem;
+}
+
+.footer__contact-info a {
+  color: var(--clr-accent);
+}
+
+.footer__socials {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Envuelve cada enlace a red social */
+.social-link {
+  display: inline-block;
+  text-decoration: none;
+}
+
+/* Tamaño y contenedor de los iconos */
+.icon-wrapper {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+}
+
+.icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: none; /* Se mostrará solo el que corresponda al tema */
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Mostrar solo en modo claro (data-theme="light") */
+html[data-theme="light"] .light-mode {
+  display: block;
+}
+
+/* Mostrar solo en modo oscuro (cualquiera que NO sea data-theme="light") */
+html:not([data-theme="light"]) .dark-mode {
+  display: block;
+}
+
+/* Hover en iconos para dar feedback */
+.social-link:hover .icon {
+  opacity: 0.8;
+}
+
+/* ==============================
+   PARTE INFERIOR DEL FOOTER
+   ============================== */
+.footer__bottom {
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--clr-input-border);
+  padding-top: 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--clr-text);
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 600px) {
+  .footer__container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer__socials {
+    justify-content: center;
+  }
+  .footer__contact-info {
+    margin-bottom: 1rem;
+  }
+}
+
+
+
+/* ===============================================
+   MEDIA QUERIES
+   =============================================== */
+@media screen and (max-width: 400px) {
+  .login-card {
+    padding: 1.5rem;
+  }
+
+  .header__inner {
+    max-width: 100%;
+  }
+}
+

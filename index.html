@@ -1,29 +1,108 @@
+<!-- index.html -->
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="assets/styles.css" />
-  <title>Login - Gestor de Usuarios</title>
+  <!-- Hoja de estilos exclusiva para este login -->
+  <link rel="stylesheet" href="assets/stylesindex.css" />
+  <title>Iniciar Sesión - Gestor de Usuarios</title>
 </head>
 <body>
-  <div class="container">
-    <h2>Iniciar Sesión</h2>
-    <form id="loginForm">
-      <label for="email">Correo electrónico</label>
-      <input type="email" id="email" required />
+  <!-- Header con botón de cambio de tema -->
+  <header class="header">
+    <div class="header__inner">
+      <h1 class="header__logo">Gestor de Usuarios</h1>
+      <button id="theme-toggle" aria-label="Cambiar a modo claro" class="header__toggle-btn">🌙</button>
+    </div>
+  </header>
 
-      <label for="password">Contraseña</label>
-      <input type="password" id="password" required />
+  <main class="main">
+    <div class="login-card">
+      <h2 class="login-card__title">Iniciar Sesión</h2>
+      <form id="loginForm" class="login-card__form" novalidate>
+        <label for="email" class="login-card__label">Correo electrónico</label>
+        <input type="email" id="email" name="email" class="login-card__input" placeholder="tunombre@ejemplo.com" required />
 
-      <button type="submit">Entrar</button>
-    </form>
-    <p>¿No tienes cuenta? <a href="register.html">Regístrate</a></p>
-    <p id="error" class="error"></p>
+        <label for="password" class="login-card__label">Contraseña</label>
+        <input type="password" id="password" name="password" class="login-card__input" placeholder="••••••••••" required />
+
+        <button type="submit" class="login-card__button">Entrar</button>
+      </form>
+      <p class="login-card__footer">
+        ¿No tienes cuenta?
+        <a href="register.html" class="login-card__link">Regístrate</a>
+      </p>
+      <p id="error" class="login-card__error"></p>
+    </div>
+  </main>
+
+  <!-- Pie de página profesional -->
+<footer class="footer">
+  <div class="footer__container">
+    <div class="footer__contact-info">
+      <p>Email: <a href="mailto:pieroallccaco19@gmail.com">pieroallccaco19@gmail.com</a></p>
+      <p>Ubicación: Lima, Perú</p>
+      <p>Teléfono: <a href="tel:+51987654321">+51 987 654 321</a></p>
+    </div>
+
+    <div class="footer__socials">
+      <a
+        href="https://github.com/PieroA19"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="social-link"
+      >
+        <div class="icon-wrapper">
+          <!-- Icono para modo claro (se muestra solo cuando data-theme="light") -->
+          <img
+            src="assets/github-light.png"
+            class="icon light-mode"
+            alt="GitHub modo claro"
+          />
+          <!-- Icono para modo oscuro (se muestra solo cuando NO es data-theme="light") -->
+          <img
+            src="assets/github-dark.png"
+            class="icon dark-mode"
+            alt="GitHub modo oscuro"
+          />
+        </div>
+      </a>
+
+      <a
+        href="https://www.linkedin.com/in/piero-allccaco-113253289"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="social-link"
+      >
+        <div class="icon-wrapper">
+          <!-- Icono para modo claro -->
+          <img
+            src="assets/linkedin-light.png"
+            class="icon light-mode"
+            alt="LinkedIn modo claro"
+          />
+          <!-- Icono para modo oscuro -->
+          <img
+            src="assets/linkedin-dark.png"
+            class="icon dark-mode"
+            alt="LinkedIn modo oscuro"
+          />
+        </div>
+      </a>
+    </div>
   </div>
-  <!-- 1) Primero cargamos auth.js, que define saveToken(), parseJwt(), etc. -->
+
+  <div class="footer__bottom">
+    <p>© <span id="current-year"></span> Gestor de Tareas. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+
+  <!-- Scripts: auth, theme y login -->
   <script src="js/auth.js"></script>
-  <!-- 2) Luego cargamos login.js, que asume que saveToken() ya existe -->
+  <script src="js/theme.js"></script>
+  <script src="js/footer.js"></script>
   <script src="js/login.js"></script>
 </body>
 </html>
