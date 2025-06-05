@@ -451,7 +451,7 @@ body {
 
 /* --------------------- MODAL DE EDICIÓN --------------------- */
 .admin-modal {
-  display: none; /* Se mostrará con JS */
+  display: flex; /* Siempre flex para centrar el contenido */
   position: fixed;
   top: 0;
   left: 0;
@@ -461,6 +461,17 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 50;
+
+  /* Ocultar por defecto */
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 0.2s, opacity 0.2s ease-in-out;
+}
+
+.admin-modal.active {
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0s;
 }
 
 .admin-modal__content {

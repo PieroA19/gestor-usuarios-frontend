@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('editName').value = data.user.name;
       document.getElementById('editEmail').value = data.user.email;
       document.getElementById('editRole').value = data.user.role;
-      editModal.style.display = 'block';
+      editModal.classList.add('active');
     } catch (err) {
       console.error('Error al obtener usuario:', err);
       alert('Error de red al obtener usuario');
@@ -145,8 +145,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Cancelar edición
   cancelEdit.addEventListener('click', () => {
-    editModal.style.display = 'none';
+    editModal.classList.remove('active');
   });
+
+  editModal.addEventListener('click', (e) => {
+    if (e.target === editModal) {
+      editModal.classList.remove('active');
+    }
+  });
+
 
   // Guardar cambios de edición
   editForm.addEventListener('submit', async (e) => {
@@ -172,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
         errorEdit.textContent = data.message || data.errors[0].msg;
         return;
       }
-      editModal.style.display = 'none';
+      editModal.classList.remove('active');
       fetchUsers();
     } catch (err) {
       console.error('Error al editar usuario:', err);
