@@ -1,8 +1,6 @@
-/* stylesindex.css */
-
-/* ==============================================
+/* ===============================================
    FUENTES & VARIABLES DE COLOR
-   ============================================== */
+   =============================================== */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
 :root {
@@ -12,18 +10,28 @@
   --clr-text: #2e2e2e;
   --clr-accent: #00509e;
   --clr-subtext: #6c757d;
+
+  /* Inputs y botones */
   --clr-input-bg: #ffffff;
   --clr-input-text: #2e2e2e;
   --clr-input-border: #ced4da;
   --clr-button-bg: #00509e;
   --clr-button-hover-bg: #003f7d;
   --clr-button-text: #ffffff;
+
+  /* Errores */
   --clr-error: #d6336c;
+
+  /* Fondo de patrón */
   --clr-pattern-light: rgba(0, 80, 158, 0.03);
   --clr-pattern-dark: rgba(0, 80, 158, 0.06);
+
+  /* Sombras y transiciones */
   --shadow-s: 0 1px 3px rgba(0, 0, 0, 0.1);
   --shadow-m: 0 4px 12px rgba(0, 0, 0, 0.1);
   --transition-fast: 0.2s ease-in-out;
+
+  /* Tipografía */
   --font-body: 'Inter', sans-serif;
   --font-heading: 'Inter', sans-serif;
 }
@@ -34,19 +42,22 @@
   --clr-text: #e1e1e6;
   --clr-subtext: #a8a8b3;
   --clr-accent: #4dabf7;
+
   --clr-input-bg: #2e2e33;
   --clr-input-text: #e1e1e6;
   --clr-input-border: #3f3f46;
   --clr-button-bg: #4dabf7;
   --clr-button-hover-bg: #3398f0;
+
   --clr-error: #ff6b6b;
+
   --clr-pattern-light: rgba(255, 255, 255, 0.02);
   --clr-pattern-dark: rgba(255, 255, 255, 0.04);
 }
 
-/* ==============================================
+/* ===============================================
    RESET Y TIPOGRAFÍA GLOBAL
-   ============================================== */
+   =============================================== */
 * {
   margin: 0;
   padding: 0;
@@ -68,18 +79,18 @@ body {
   overflow-x: hidden;
 }
 
-/* ==============================================
+/* ===============================================
    CONTENEDOR CENTRAL
-   ============================================== */
+   =============================================== */
 .container {
   max-width: 480px;
   margin: 0 auto;
   padding: 0 1rem;
 }
 
-/* ==============================================
+/* ===============================================
    ANIMACIONES GLOBALES
-   ============================================== */
+   =============================================== */
 .fade-in-page {
   animation: fadeInPage 0.6s ease-out;
 }
@@ -95,46 +106,9 @@ body {
   }
 }
 
-.animate-fade-in-up {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.6s ease-out forwards;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ==============================================
-   FONDO GRADIENTE SUTIL DETRÁS DEL LOGIN
-   ============================================== */
-.background-gradient {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    135deg,
-    var(--clr-bg) 0%,
-    transparent 50%,
-    var(--clr-bg) 100%
-  );
-  opacity: 0.15;
-  pointer-events: none;
-  z-index: -1;
-}
-
-/* ==============================================
+/* ===============================================
    HEADER MEJORADO
-   ============================================== */
+   =============================================== */
 .header-improved {
   background-color: var(--clr-card);
   padding: 1rem 0;
@@ -142,6 +116,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 20;
+  overflow: hidden;
 }
 
 .header-improved__inner {
@@ -188,14 +163,34 @@ body {
   transform: translateY(-2px);
 }
 
-/* ==============================================
-   LOGIN MEJORADO
-   ============================================== */
+/* ===============================================
+   FONDO GRADIENTE SUTIL DETRÁS DEL FORMULARIO
+   =============================================== */
+.background-gradient {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    var(--clr-bg) 0%,
+    transparent 50%,
+    var(--clr-bg) 100%
+  );
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ===============================================
+   FORMULARIO DE REGISTRO MEJORADO
+   =============================================== */
 .main-improved {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 100px);
+  min-height: calc(100vh - 100px); /* ajusta según altura real del header */
   padding: 2rem 0;
 }
 
@@ -210,7 +205,8 @@ body {
   border-radius: 12px;
   padding: 2.5rem 2rem;
   box-shadow: var(--shadow-m);
-  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+  transition: box-shadow var(--transition-fast),
+    transform var(--transition-fast);
   position: relative;
   overflow: hidden;
 }
@@ -222,7 +218,11 @@ body {
   right: -60px;
   width: 180px;
   height: 180px;
-  background: radial-gradient(circle, var(--clr-accent) 0%, transparent 60%);
+  background: radial-gradient(
+    circle,
+    var(--clr-accent) 0%,
+    transparent 60%
+  );
   opacity: 0.08;
   transform: rotate(45deg);
   transition: opacity var(--transition-fast);
@@ -274,13 +274,15 @@ body {
 
 .login-card-improved__input {
   width: 100%;
-  padding: 0.85rem 0.85rem 0.85rem 2.6rem;
+  padding: 0.85rem 0.85rem 0.85rem 2.6rem; /* espacio para icono */
   border: 1px solid var(--clr-input-border);
   border-radius: 6px;
   background-color: var(--clr-input-bg);
   color: var(--clr-input-text);
   font-size: 1rem;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
 }
 
 .login-card-improved__input::placeholder {
@@ -304,7 +306,10 @@ body {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: background-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+  transition:
+    background-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 .login-card-improved__button:hover {
@@ -339,30 +344,15 @@ body {
   min-height: 1.2em;
 }
 
-/* Ajustes responsivos */
-@media screen and (max-width: 480px) {
-  .login-card-improved {
-    padding: 2rem 1.5rem;
-  }
-  .login-card-improved__title {
-    font-size: 1.75rem;
-  }
-  .input-icon {
-    left: 10px;
-  }
-  .login-card-improved__input {
-    padding-left: 2.4rem;
-  }
-}
-
-/* ==============================================
+/* ===============================================
    FOOTER MEJORADO
-   ============================================== */
+   =============================================== */
 .footer-improved {
   background-color: var(--clr-card);
   color: var(--clr-text);
   padding: 3rem 1rem 1.5rem;
   border-top: 3px solid var(--clr-accent);
+  position: relative;
   overflow: hidden;
   transition: background-color var(--transition-fast);
 }
@@ -376,6 +366,7 @@ body {
   padding: 0 1rem;
 }
 
+/* Branding */
 .footer-improved__brand {
   flex: 1 1 200px;
 }
@@ -394,6 +385,7 @@ body {
   line-height: 1.4;
 }
 
+/* Secciones */
 .footer-improved__section {
   flex: 1 1 180px;
 }
@@ -417,6 +409,7 @@ body {
   border-radius: 2px;
 }
 
+/* Contacto */
 .footer-improved__contact-list {
   list-style: none;
 }
@@ -449,6 +442,7 @@ body {
   color: var(--clr-accent);
 }
 
+/* Enlaces rápidos */
 .footer-improved__links {
   list-style: none;
 }
@@ -474,13 +468,14 @@ body {
   cursor: not-allowed;
 }
 
+/* Redes sociales */
 .footer-improved__socials .footer-improved__social-icons {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-.social-link {
+.footer-improved__socials .social-link {
   display: inline-block;
   width: 36px;
   height: 36px;
@@ -495,27 +490,19 @@ body {
     box-shadow var(--transition-fast);
 }
 
-.social-link:hover {
+.footer-improved__socials .social-link:hover {
   background-color: var(--clr-accent);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
-.icon {
-  display: none;
+.footer-improved__socials .social-link .icon {
   width: 20px;
   height: 20px;
   filter: invert(var(--icon-invert, 0));
 }
 
-html[data-theme="light"] .icon.light-mode {
-  display: block;
-}
-
-html[data-theme="dark"] .icon.dark-mode {
-  display: block;
-}
-
+/* Separador y derechos */
 .footer-improved__bottom {
   max-width: 960px;
   margin: 2rem auto 0;
@@ -536,53 +523,80 @@ html[data-theme="dark"] .icon.dark-mode {
   margin-bottom: 0.5rem;
 }
 
-/* Adaptaciones modo oscuro */
-[data-theme="dark"] .footer-improved {
-  background-color: var(--clr-card);
+/* ===============================================
+   ICONOS DARK/LIGHT
+   =============================================== */
+.icon {
+  display: none;
 }
 
-[data-theme="dark"] .social-link {
-  background-color: var(--clr-input-bg);
+html[data-theme="light"] .icon.light-mode {
+  display: block;
 }
 
-[data-theme="dark"] .social-link:hover {
-  background-color: var(--clr-accent);
+html[data-theme="dark"] .icon.dark-mode {
+  display: block;
 }
 
-/* Media queries footer */
+/* ===============================================
+   RESPONSIVE (AJUSTES)
+   =============================================== */
 @media screen and (max-width: 768px) {
   .footer-improved__container {
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
   }
+
   .footer-improved__section,
   .footer-improved__brand {
     flex: 1 1 100%;
   }
-  .footer-improved__social-icons {
+
+  .footer-improved__socials .footer-improved__social-icons {
     justify-content: flex-start;
   }
+
   .footer-improved__bottom {
     margin-top: 1.5rem;
   }
 }
 
 @media screen and (max-width: 480px) {
+  .login-card-improved {
+    padding: 2rem 1.5rem;
+  }
+
+  .login-card-improved__title {
+    font-size: 1.75rem;
+  }
+
+  .input-icon {
+    left: 10px;
+  }
+
+  .login-card-improved__input {
+    padding-left: 2.4rem;
+  }
+
   .footer-improved {
     padding: 2rem 1rem 1rem;
   }
+
   .footer-improved__logo {
     font-size: 1.6rem;
   }
+
   .footer-improved__heading {
     font-size: 1rem;
   }
+
   .footer-improved__contact-link,
   .footer-improved__links a {
     font-size: 0.9rem;
   }
-  .social-link {
+
+  .footer-improved__socials .social-link {
     width: 32px;
     height: 32px;
   }

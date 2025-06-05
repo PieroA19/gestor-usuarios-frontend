@@ -1,84 +1,413 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="assets/styles.css" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+  />
+  <meta
+    name="description"
+    content="Panel de administración - Gestor de Usuarios"
+  />
+  <link rel="icon" href="assets/favicon.ico" />
+
+  <!-- Fuentes corporativas -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Hoja de estilos exclusiva para admin -->
+  <link rel="stylesheet" href="assets/stylesadmin.css" />
   <title>Panel Admin - Gestor de Usuarios</title>
 </head>
-<body>
-  <div class="navbar">
-    <div>Panel de Administración</div>
-    <div>
-      <button id="logoutBtn">Cerrar sesión</button>
+<body class="fade-in-page">
+  <!-- ================= HEADER MEJORADO ================= -->
+  <header class="header-improved">
+    <div class="container header-improved__inner">
+      <!-- Logo -->
+      <h1 class="header-improved__logo">Gestor de Usuarios</h1>
+
+      <!-- Toggle de tema -->
+      <button
+        id="theme-toggle"
+        aria-label="Cambiar a modo claro"
+        class="header-improved__toggle-btn"
+      >
+        🌙
+      </button>
     </div>
-  </div>
-  <div class="container">
-    <h2>Usuarios registrados</h2>
-    <table id="usersTable" border="1" width="100%" style="border-collapse: collapse; margin-bottom: 20px;">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nombre</th>
-          <th>Correo</th>
-          <th>Rol</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Filas generadas dinámicamente -->
-      </tbody>
-    </table>
+  </header>
 
-    <h3>Crear nuevo usuario</h3>
-    <form id="createUserForm">
-      <label for="name">Nombre</label>
-      <input type="text" id="name" required />
+  <!-- ================= FONDO GRADIENTE SUTIL ================= -->
+  <div class="background-gradient"></div>
 
-      <label for="email">Correo</label>
-      <input type="email" id="email" required />
+  <!-- ================= PANEL DE ADMINISTRACIÓN ================= -->
+  <main class="main-admin">
+    <div class="container main-admin__wrapper">
+      <!-- Barra superior: título + botón de logout -->
+      <div class="admin-header">
+        <h2 class="admin-header__title">Panel de Administración</h2>
+        <button id="logoutBtn" class="admin-header__logout-btn">
+          Cerrar sesión
+        </button>
+      </div>
 
-      <label for="password">Contraseña</label>
-      <input type="password" id="password" required minlength="6" />
+      <!-- Contenido principal dividido en dos tarjetas: tabla de usuarios y formulario de creación -->
+      <div class="admin-content">
+        <!-- Tarjeta: Tabla de usuarios -->
+        <section class="admin-card admin-card--users">
+          <h3 class="admin-card__title">Usuarios Registrados</h3>
+          <div class="table-wrapper">
+            <table id="usersTable" class="admin-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Correo</th>
+                  <th>Rol</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Filas generadas dinámicamente -->
+              </tbody>
+            </table>
+          </div>
+        </section>
 
-      <label for="role">Rol</label>
-      <select id="role" required>
-        <option value="usuario">Usuario</option>
-        <option value="admin">Admin</option>
-      </select>
+        <!-- Tarjeta: Formulario de creación de nuevo usuario -->
+        <section class="admin-card admin-card--create">
+          <h3 class="admin-card__title">Crear Nuevo Usuario</h3>
+          <form id="createUserForm" class="admin-form" novalidate>
+            <div class="form-group">
+              <label for="name" class="admin-form__label">Nombre</label>
+              <div class="input-wrapper">
+                <svg
+                  class="input-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="20"
+                  height="20"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                  />
+                </svg>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="admin-form__input"
+                  placeholder="Nombre completo"
+                  required
+                />
+              </div>
+            </div>
 
-      <button type="submit">Crear usuario</button>
-    </form>
-    <p id="errorAdmin" class="error"></p>
-  </div>
+            <div class="form-group">
+              <label for="email" class="admin-form__label">Correo</label>
+              <div class="input-wrapper">
+                <svg
+                  class="input-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="20"
+                  height="20"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M2 4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4zm2 0v1.528l8 5.147 8-5.147V4H4zm0 3.137v12.863h16V7.137l-8 5.147-8-5.147z"
+                  />
+                </svg>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="admin-form__input"
+                  placeholder="tunombre@ejemplo.com"
+                  required
+                />
+              </div>
+            </div>
 
-  <!-- Modal básico para editar usuario -->
-  <div id="editModal" style="display: none; position: fixed; top: 0; left: 0;
-      width: 100%; height: 100%; background: rgba(0,0,0,0.5);">
-    <div style="background: white; max-width: 400px; margin: 100px auto; padding: 20px; border-radius: 8px; position: relative;">
-      <h3>Editar usuario</h3>
-      <form id="editUserForm">
+            <div class="form-group">
+              <label for="password" class="admin-form__label">Contraseña</label>
+              <div class="input-wrapper">
+                <svg
+                  class="input-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="20"
+                  height="20"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12 17a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm6-6V9a6 6 0 1 0-12 0v2H4v10h16V11h-2zm-8-2a4 4 0 1 1 8 0v2H10V9z"
+                  />
+                </svg>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  class="admin-form__input"
+                  placeholder="••••••••••"
+                  required
+                  minlength="6"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="role" class="admin-form__label">Rol</label>
+              <div class="input-wrapper">
+                <select id="role" name="role" class="admin-form__input" required>
+                  <option value="usuario">Usuario</option>
+                  <option value="admin">Admin</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" class="admin-form__button">
+              Crear usuario
+            </button>
+          </form>
+          <p id="errorAdmin" class="admin-form__error" aria-live="polite"></p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- ================= MODAL PARA EDITAR USUARIO ================= -->
+  <div id="editModal" class="admin-modal">
+    <div class="admin-modal__content">
+      <h3 class="admin-modal__title">Editar Usuario</h3>
+      <form id="editUserForm" class="admin-form" novalidate>
         <input type="hidden" id="editUserId" />
-        <label for="editName">Nombre</label>
-        <input type="text" id="editName" required />
 
-        <label for="editEmail">Correo</label>
-        <input type="email" id="editEmail" required />
+        <div class="form-group">
+          <label for="editName" class="admin-form__label">Nombre</label>
+          <div class="input-wrapper">
+            <svg
+              class="input-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              fill="currentColor"
+            >
+              <path
+                d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+              />
+            </svg>
+            <input
+              type="text"
+              id="editName"
+              name="editName"
+              class="admin-form__input"
+              placeholder="Nombre completo"
+              required
+            />
+          </div>
+        </div>
 
-        <label for="editRole">Rol</label>
-        <select id="editRole" required>
-          <option value="usuario">Usuario</option>
-          <option value="admin">Admin</option>
-        </select>
+        <div class="form-group">
+          <label for="editEmail" class="admin-form__label">Correo</label>
+          <div class="input-wrapper">
+            <svg
+              class="input-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              fill="currentColor"
+            >
+              <path
+                d="M2 4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4zm2 0v1.528l8 5.147 8-5.147V4H4zm0 3.137v12.863h16V7.137l-8 5.147-8-5.147z"
+              />
+            </svg>
+            <input
+              type="email"
+              id="editEmail"
+              name="editEmail"
+              class="admin-form__input"
+              placeholder="tunombre@ejemplo.com"
+              required
+            />
+          </div>
+        </div>
 
-        <button type="submit">Guardar cambios</button>
-        <button type="button" id="cancelEdit">Cancelar</button>
+        <div class="form-group">
+          <label for="editRole" class="admin-form__label">Rol</label>
+          <div class="input-wrapper">
+            <select id="editRole" name="editRole" class="admin-form__input" required>
+              <option value="usuario">Usuario</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="admin-modal__buttons">
+          <button type="submit" class="admin-form__button">
+            Guardar cambios
+          </button>
+          <button type="button" id="cancelEdit" class="admin-form__button admin-form__button--secondary">
+            Cancelar
+          </button>
+        </div>
       </form>
-      <p id="errorEdit" class="error"></p>
+      <p id="errorEdit" class="admin-form__error" aria-live="polite"></p>
     </div>
   </div>
 
+  <!-- ================= FOOTER MEJORADO ================= -->
+  <footer class="footer-improved">
+    <div class="container footer-improved__container">
+      <!-- Branding -->
+      <div class="footer-improved__brand">
+        <h2 class="footer-improved__logo">Gestor de Usuarios</h2>
+        <p class="footer-improved__tagline">
+          Plataforma segura y confiable para administrar tus cuentas y permisos.
+        </p>
+      </div>
+
+      <!-- Contacto -->
+      <div class="footer-improved__section">
+        <h3 class="footer-improved__heading">Contacto</h3>
+        <ul class="footer-improved__contact-list">
+          <li>
+            <span class="footer-improved__icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="currentColor"
+              >
+                <path
+                  d="M2 4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4zm2 0v1.528l8 5.147 8-5.147V4H4zm0 3.137v12.863h16V7.137l-8 5.147-8-5.147z"
+                />
+              </svg>
+            </span>
+            <a
+              href="mailto:pieroallccaco19@gmail.com"
+              class="footer-improved__contact-link"
+              >pieroallccaco19@gmail.com</a
+            >
+          </li>
+          <li>
+            <span class="footer-improved__icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="currentColor"
+              >
+                <path
+                  d="M21 16.5a2.5 2.5 0 0 1-2.011 2.45l-3.154.62a1.5 1.5 0 0 1-1.626-.596l-1.558-2.236a1.5 1.5 0 0 0-1.627-.596l-2.121.418a10.014 10.014 0 0 1-4.23-1.637 10.007 10.007 0 0 1-3.33-3.33 10.014 10.014 0 0 1-1.637-4.23l.418-2.121a1.5 1.5 0 0 0-.596-1.627L4.026 4.79a1.5 1.5 0 0 1-.596-1.626l.62-3.154A2.5 2.5 0 0 1 5.5 0h13A2.5 2.5 0 0 1 21 2.5v14z"
+                />
+              </svg>
+            </span>
+            <a href="tel:+51987654321" class="footer-improved__contact-link"
+              >+51 987 654 321</a
+            >
+          </li>
+          <li>
+            <span class="footer-improved__icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="currentColor"
+              >
+                <path
+                  d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"
+                />
+              </svg>
+            </span>
+            <span class="footer-improved__contact-link">Lima, Perú</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Enlaces -->
+      <div class="footer-improved__section">
+        <h3 class="footer-improved__heading">Enlaces</h3>
+        <ul class="footer-improved__links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="register.html">Registro</a></li>
+          <li><a href="#" class="disabled">Ayuda</a></li>
+          <li><a href="#">Términos y Condiciones</a></li>
+        </ul>
+      </div>
+
+      <!-- Redes sociales -->
+      <div class="footer-improved__section footer-improved__socials">
+        <h3 class="footer-improved__heading">Síguenos</h3>
+        <div class="footer-improved__social-icons">
+          <a
+            href="https://github.com/PieroA19"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            class="social-link"
+          >
+            <div class="icon-wrapper">
+              <img
+                src="assets/github-light.png"
+                class="icon light-mode"
+                alt="GitHub modo claro"
+              />
+              <img
+                src="assets/github-dark.png"
+                class="icon dark-mode"
+                alt="GitHub modo oscuro"
+              />
+            </div>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/piero-allccaco-113253289"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            class="social-link"
+          >
+            <div class="icon-wrapper">
+              <img
+                src="assets/linkedin-light.png"
+                class="icon light-mode"
+                alt="LinkedIn modo claro"
+              />
+              <img
+                src="assets/linkedin-dark.png"
+                class="icon dark-mode"
+                alt="LinkedIn modo oscuro"
+              />
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Separador y derechos -->
+    <div class="footer-improved__bottom">
+      <hr class="footer-improved__divider" />
+      <p class="footer-improved__copyright">
+        © <span id="current-year"></span> Gestor de Usuarios. Todos los derechos
+        reservados.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts: auth, theme, footer, admin -->
   <script src="js/auth.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/footer.js"></script>
   <script src="js/admin.js"></script>
 </body>
 </html>
